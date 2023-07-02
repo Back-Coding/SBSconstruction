@@ -20,7 +20,7 @@ import EditService from './admin/components/EditService';
 import AdminLogin from './admin/AdminLogin';
 import NoteState from './admin/context/services/adminState';
 import AllDataWork from './admin/components/AllDataWork'
-
+import ResetPassword from './components/ResetPassword'
 const host="http://localhost:5000"
 
 function App()  {
@@ -155,6 +155,7 @@ function App()  {
         <Route path="/register" element={<Register mode={mode} showAlert={showAlert} />} />
         <Route path="/forgottenpassword" element={<ForgottenPassword mode={mode} host={host} showAlert={showAlert}  />} />
         <Route path="/about" element={<About companyname={getCompanyName} mode={mode} />} />
+        <Route  path="/reset-password/:token" element={<ResetPassword mode={mode} host={host} showAlert={showAlert}  />} />
         {/* <Route path="/blog"  element={<Blog blog="Blog" mode={mode}/> } /> 
         <Route path="/social"  element={<Social mode={mode}/>} /> */}
         {!isUserLoggedIn && (

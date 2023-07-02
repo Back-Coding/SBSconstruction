@@ -1,22 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const UserLogin = require("../models/UserLogin");
+const User = require("../models/UserLogin");
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const fetchuser = require("../middleware/fetchuser");
 const bcrypt = require('bcryptjs');
+const crypto= require('crypto');
 const { body, validationResult } = require('express-validator');
 
 
 const JWT_SECRET = 'RupeshIsagoodb$oy?';
-let messageOTP=null;
 
-const CLIENT_ID =
-  "365563839723-0jfoabebmd5lii33e35kgnfc90f3fnu4.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
-const REDIRECT_URL = "https://developers.google.com/oauthplayground"; // This should match the redirect URI you specified in the Google Developers Console
 
-const sendEmailToOTP = (email, otp) => {
+const sendEmailToOTP = (email, resetLink) => {
+  const CLIENT_ID =
+    "365563839723-0jfoabebmd5lii33e35kgnfc90f3fnu4.apps.googleusercontent.com";
+  const CLIENT_SECRET = "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";
+  const REDIRECT_URL = "https://developers.google.com/oauthplayground"; // This should match the redirect URI you specified in the Google Developers Console
   try {
     const OAuth2 = google.auth.OAuth2;
 
@@ -52,19 +52,19 @@ const sendEmailToOTP = (email, otp) => {
 
     // Set up email options and send the email
     const mailOptions = {
-      from: "SBS Constructor <noreplyofmassage@gmail.com>",
+      from: "SBS Constructor,<noreplyofmassage@gmail.com>",
       to: email,
-      subject: "OTP Verification",
+      subject: "Reset password instructions",
       html: `<!DOCTYPE html>
             <html>
             <head>
-            <title>SBS Constractor : OTP Verification </title>
+            <title> Reset password instructions</title>
             </head>
             <body>
-            <h1>OTP Verification</h1>
-            <p>This email is to verify your email address. Please enter the following OTP code in the verification :</p>
-            <p><b>OTP: ${otp}</b></p>
-            <p>This code will expire in 10 minutes. If you do not receive this email, please contact us for assistance.</p>
+            <h2>Reset password</h2>
+            <p> Click the link below to reset your password. Reset Password If you didn’t request this email, you can safely ignore </p>
+            <p><a href="${resetLink}">${resetLink}</a></p>
+            <p>This code will expire in 10 minutes. If you do not receive this email</p>
             </body>
             </html>`,
     };
@@ -80,67 +80,74 @@ const sendEmailToOTP = (email, otp) => {
     console.log(erorr);
   }
 };
+// Example middleware functions
+const middleware1 = (req, res, next) => {
+  // Middleware logic
+  next();
+};
 
 // Router for forgot password
-router.post("/forgotpassword", [ body('email', 'Enter a valid email').isEmail()],  async (req, res) => {
-  // Get the user's email address
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+router.post("/forgertpassword", middleware1, async (req, res) => {
   try {
     const email = req.body.email;
 
-    // Find the user in the database
-    const user = await UserLogin.findOne({ email });
-    // If the user exists, send an OTP to their email address
-    if (user) {
-      // Generate a random OTP
-      const messageOTP = Math.floor(Math.random() * 1000000);
-      // sendEmailToOTP(email, messageOTP);
-      console.log(messageOTP)
-
-      // Send the OTP to the user's email address
-      // TODO: Implement this
-      // res.status(200)
-      // res.json({message:"ok"})
-      res.json({messageOTP})
-    } else {
-      // The user does not exist
-      res.status(404).send("User not found");
+    // Check if user exists in the database (Replace with actual database query)
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
     }
+
+    // Generate and store the reset token
+    const resetToken = crypto.randomBytes(20).toString('hex');
+    user.resetToken = resetToken;
+    user.resetTokenExpiry = Date.now() + 10 * 60 * 1000; // Token expires in 10 minutes
+    await user.save();
+  // Construct the reset URL
+  const resetUrl = `http://localhost:3000/reset-password/${resetToken}`;
+
+  // Send password reset email to the user
+  // sendEmailToOTP(email, resetToken);
+  console.log("end this script");
+
+  res.json({ message: 'Reset email sent', email, resetUrl });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
 });
 
-// Router for reset password
-router.post("/resetpassword", async (req, res) => {
-  try{
-  // Get the user's email address, OTP, and new password
-  const email = req.body.email;
-  // const otp = req.body.otp;
-  const newPassword = req.body.newPassword;
-  
-  // Find the user in the database
-  const user = await UserLogin.findOne({ email });
-  const salt = await bcrypt.genSalt(10);
-  const secPass = await bcrypt.hash(newPassword, salt);
-  
-  // If the user exists and the OTP is valid, update the user's password
-  
-  // Update the user's password
-  user.password = secPass;
-  await user.save();
 
-    // Redirect the user to the login page
-    res.json({message:"change ok"})
-  } catch(error) {
-    // The user does not exist or the OTP is invalid
-    res.status(401).send("Invalid credentials");
+
+router.post('/reset-password/:token', async (req, res) => {
+  try {
+
+    const resetToken = req.params.token;
+    const newPassword = req.body.confirmPassword;
+    // Find user by reset token and check expiration
+    const user = await User.findOne({ resetToken, resetTokenExpiry: { $gt: Date.now() } });
+    if (!user) {
+      // Token is invalid or expired
+      return res.status(400).json({ error: 'Invalid or expired reset token' });
+    }
+    //  Update the user's password
+    user.password = newPassword;
+    user.passwordResetUsed = true;
+    // Reset the reset token and expiry
+    user.resetToken =undefined
+    user.resetTokenExpiry=undefined
+
+    // Save the updated user
+    await user.save();
+
+    res.json({ message: 'Password reset successful' });
+    
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
   }
 });
+
+
 
 // Export the router
 module.exports = router;
