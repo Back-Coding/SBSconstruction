@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const UserForms = require('../models/UserForms');
-const fetchadmin=require('../middleware/fetchadmin')
+const UserForms = require('../../models/UserForms');
+const fetchadmin=require('../../middleware/fetchadmin')
 const { body, validationResult } = require('express-validator');
 
 function formSubmissionMiddleware(req, res, next) {

@@ -23,6 +23,9 @@ function AllDataWork(props) {
   // This Searching bar search
   const [searchQuery, setSearchQuery] = useState('');
   const handleSearch = () => {
+    if(searchQuery===''){
+      props.showAlert("Search box in type")
+    }else{
     const results = Object.values(workForms).filter(obj => obj.name.toLowerCase().includes(searchQuery.toLowerCase()));
     if(results.length === 0){
       props.showAlert("Not Found","red")
@@ -30,6 +33,7 @@ function AllDataWork(props) {
 
       setSearchResults(results);
     }
+  }
   }
     
   return (

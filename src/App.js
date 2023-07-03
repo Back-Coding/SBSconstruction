@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import Login from './components/Login';
 import Register from './components/Register';
 import ForgottenPassword from './components/ForgottenPassword';
+import AdminForgottenPassword from './admin/components/ForgertPassword';
 import companylogo from './img/company_logo.png'
 import Social from './pages/Social';
 import About from './pages/About';
@@ -21,6 +22,7 @@ import AdminLogin from './admin/AdminLogin';
 import NoteState from './admin/context/services/adminState';
 import AllDataWork from './admin/components/AllDataWork'
 import ResetPassword from './components/ResetPassword'
+import AdminResetPassword from './admin/components/ResetPassword'
 const host="http://localhost:5000"
 
 function App()  {
@@ -28,7 +30,7 @@ function App()  {
   // const companylogo = 'company-logo.png'; // Example company log
 
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true); // Example state for user login status
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(true); // Example state for admin login status
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false); // Example state for admin login status
   const [mode, setMode] = useState("light"); //drak and light
   const [alert, setAlert] = useState(null); // show alert
 
@@ -131,11 +133,6 @@ function App()  {
         // eslint-disable-next-line 
   },[]);
   
-  
-
-
-
-
 
 
   return (
@@ -161,12 +158,14 @@ function App()  {
         {!isUserLoggedIn && (
           // Ths contenct ADN behaviour is Login required  show Content
           <>
-          rupeh app 
+      
         </>
         )}
           {/* Admin site below and desing part working on */}
 
         <Route path="/admin"  element={<AdminLogin mode={mode} showAlert={showAlert}  handleUserLogin={handleUserLogin} handleLogout={handleLogout} />} /> 
+        <Route path="/admin/forgottenpassword" element={<AdminForgottenPassword mode={mode} host={host} showAlert={showAlert}  />} />
+        <Route  path="/reset-password-admin/:token" element={<AdminResetPassword mode={mode} host={host} showAlert={showAlert}  />} />
         {isAdminLoggedIn ? (
           
           
@@ -197,121 +196,3 @@ function App()  {
 export default App;
 
 
-
-
-
-/*
-import react ,{useContext,useState} from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Navbar from'./components/Navbar';
-import HomeContainer from './pages/HomeContainer';
-import Footer from './components/Footer';
-import Service from './pages/Service';
-import Blog from './pages/Blog';
-import Contact from './pages/Contact';
-import Login from './components/Login';
-import Register from './components/Register';
-import ForgottenPassword from './components/ForgottenPassword';
-import companylogo from './img/company_logo.png'
-import Social from './pages/Social';
-import About from './pages/About';
-import Alert from './components/Alert';
-import Admin from './admin/Admin';
-import Dashboard from './admin/Dashboard';
-
-
-
-const getCompanyName="SBS Groups"
-
-
-function App() {
-
-  const [mode, setMode] = useState("light");
-  const [alert, setAlert] = useState(null);
-
-  const toggleMode = () => {
-    if (mode === "dark") {
-      setMode("light");
-      document.body.style.background = "white";
-    } else {
-      setMode("dark");
-      document.body.style.background = "black";
-    }
-  };
-  const showAlert = (message, color) => {
-    setAlert({
-      msg: message,
-      color: color,
-    });
-    setTimeout(() => {
-      setAlert(null);
-      // eslint-disable-next-line
-    }, 3000);
-  };
-
-
-
-  return (
-    <>
-    
-    <BrowserRouter>
-
-        <Navbar companyname={getCompanyName} searchBar={false} toggleMode={toggleMode} mode={mode} />
-          <Alert alert={alert} />
-          <Routes>
-            <Route index path="/"  element={
-            <HomeContainer mode={mode} />} />
-            <Route path="/service"  element={<Service mode={mode}  />} />
-            {/* The page is templete create not working condition (Blog and Social)  a work (2023 March 20)  * /}
-            {/* <Route path="/blog"  element={<Blog blog="Blog" mode={mode}/> } /> 
-                <Route path="/social"  element={<Social mode={mode}/>} /> * /}
-            <Route path="/contact"element={<Contact  companylogo={companylogo} mode={mode} />} />
-            <Route path="/login"  element={<Login mode={mode} showAlert={showAlert} />} />
-            <Route path="/register"  element={<Register mode={mode} showAlert={showAlert} />} />
-            <Route path="/forgottenpassword"  element={<ForgottenPassword mode={mode}/>} />
-            <Route path="/aboutus"  element={<About companyname={getCompanyName} mode={mode} />} />
-              
-            
-               
-     {/* Admin site below and desing part working on * / }
-     <Route index path="/admin"  element={
-       <Admin mode={mode}  />} />
-                <Route index path="/admin/dashboard"  element={
-                  <Dashboard mode={mode}  />} />
-
-          </Routes>
-          <Footer companyname={getCompanyName} companylogo={companylogo} mode={mode} />
-      </BrowserRouter>
-    </>    
-  );
-
- 
-}
-export default App;
-*/
-
-/*
-import react from 'react'
-import NoteState from './context/notes/noteState';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './TRYFileUSERNOts/Home'
-import  Alert  from './TRYFileUSERNOts/Alert';
-function App() {
-
-  return(
-    <BrowserRouter>
-    <NoteState>
-    <Alert messagae={"This alert message box the text "}/>
-    <Routes>
-              <Route index path="/"  element={
-              <Home  />} />
-    </Routes>
-  </NoteState>
-    </BrowserRouter>
-  )
-}
-
-export default App;
-
-*/

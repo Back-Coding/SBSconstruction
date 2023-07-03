@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const fetchadmin =require('../middleware/fetchadmin');
-const Service = require('../models/Service');
+const fetchadmin =require('../../middleware/fetchadmin');
+const Service = require('../../models/Service');
 const { body, validationResult } = require('express-validator');
 
 

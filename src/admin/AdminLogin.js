@@ -1,5 +1,5 @@
 import React ,{useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const url ="http://localhost:5000/api/auth/admin/login"
 
@@ -62,7 +62,7 @@ const [credentials, setCredentials] = useState({email:"",password:""});
 
   return (
     <>
-    <div className="container mx-auto mb-72 mt-16 md:mt-5 sm:mt-11">
+    <div className="container mx-auto mb-80d mt-16 md:mt-5 sm:mt-11">
     <div className="w-full ">
       <form onSubmit={LoginAdmin} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto max-w-xs ">
         <h2 className="text-center font-bold">Admin</h2>
@@ -83,9 +83,9 @@ const [credentials, setCredentials] = useState({email:"",password:""});
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" >
         Sign In
       </button>
-      <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+      <Link to={"/admin/forgottenpassword"} className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" >
         Forgot Password?
-      </a>
+      </Link>
     </div>
   </form>
 </div>

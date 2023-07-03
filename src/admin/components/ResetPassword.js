@@ -13,9 +13,9 @@ const navigate=  useNavigate();
   const resetPasswodrd = () => {
     if (password === confirmPassword) {
       // Send request to backend API to update the password
-      axios.post(`${props.host}/api/auth/opt/reset-password/${token}`, {confirmPassword,}).then((Response) => {
+      axios.post(`${props.host}/api/admin/reset-password-admin/${token}`, {confirmPassword,}).then((Response) => {
         props.showAlert("Your password has been change successfully ");
-        navigate("/login");
+        navigate("/admin");
         }).catch((e) => {
             props.showAlert("Can't change password. or expired reset token ");
         });
@@ -29,7 +29,7 @@ const navigate=  useNavigate();
    <section className="text-gray-600 body-font mb-64">
   <div className="container px-5 py-24 mx-auto">
     <div className="flex flex-col text-center w-full mb-12">
-      <h1 className={`sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-${props.mode === "light" ? 900 : 200 }`}>Reset Password </h1>
+      <h1 className={`sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-${props.mode === "light" ? 900 : 200 }`}>Admin Reset Password </h1>
     </div>
     <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
       <div className="relative flex-grow w-full">

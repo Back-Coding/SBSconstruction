@@ -129,9 +129,10 @@ const deleteOneDataFroms = async (id) => {
       "auth-token": localStorage.getItem('token')
     }
   });
-  const json = response.json(); 
+  const json = await response.json(); 
   const newNotes = workForms.filter((element) => { return element._id !== id })
   setService(newNotes)
+  
 }
 
 

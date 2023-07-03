@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Service = require('../models/Service');
+const Service = require('../../models/Service');
 const { body, validationResult } = require('express-validator');
 
 // all Data show frontend appliction for user no login required
