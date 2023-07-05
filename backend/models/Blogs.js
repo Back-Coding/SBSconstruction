@@ -19,7 +19,7 @@ const blogSchema = new mongoose.Schema({
 })
 // Add any other fields as needed
 // Index based
-blogSchema.index({ title: 'text',content: 'text' ,image:'text'}); 
+blogSchema.index({ title: 'text',content: 'text' ,tag:'text',imagePath1:'text',imagePath2:'text',footercontent:'text'}); 
 // Create a model based on the schema
 module.exports=mongoose.model('blogs',blogSchema);
 

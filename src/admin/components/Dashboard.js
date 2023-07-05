@@ -70,7 +70,7 @@ return(
     </aside>
     <main className='bg-white  rounded-md shadow  w-fill-available w-full  ml-6 p-6'>
         <div className="flex  ">
-            <div className="mx-2 w-4/4 max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <div className="mx-2 w-3/4 max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
               <div className="flex justify-between">
             <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white"> User Register</h5>
             <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className=" mx-10 text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path></svg>
@@ -120,7 +120,7 @@ return(
         
 
          <div className="flex "> 
-          <div className="flex">
+          <div className="mx-4">
             <div  className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div>
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Show Any Type Woking on this slide </h5>
@@ -133,7 +133,7 @@ return(
                 </div>
             </div>
           </div>
-          <div className="flex">
+          <div className="">
             <div  className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div>
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Customer Forms Show All Data</h5>

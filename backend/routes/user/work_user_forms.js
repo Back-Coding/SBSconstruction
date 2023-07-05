@@ -34,7 +34,7 @@ router.post('/usercontectforms',formSubmissionMiddleware , [
             if (!errors.isEmpty()) {
                 return res.status(400).json({ errors: errors.array() });
             }
-            const note = new UserForms({name,email,phoneno,pincode,address,description ,city,state,field})
+            const note = new UserForms({name,email,phoneno,pincode,address,description ,city,state,field,})
             const savedNote = await note.save()
             return res.status(200).json({  ok: "Succssfuly submit forms" });
 
@@ -48,10 +48,10 @@ router.post('/usercontectforms',formSubmissionMiddleware , [
 
 // Router 2:  Delete the Froms -> http://localhost:5000/api/service/u/deleteonerowforms/6499a0ddc455a24404132f90
 router.delete('/deleteonerowforms/:id',fetchadmin,async (req, res) => {
-   
-      try {
-          // Find the note to be delete and delete it
-          let note = await UserForms.findById(req.params.id);
+    try {
+        // Find the note to be delete and delete it
+        let note = await UserForms.findById(req.params.id);
+        // console.log( note)
           if (!note) { return res.status(404).send("Not Found") }
 
           // Allow deletion only if user owns this Note

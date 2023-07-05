@@ -96,8 +96,8 @@ router.put('/update-blogs/:id', fetchadmin, async(req, res) => {
   // Create a new blog with customized image contentw
   router.post('/addblog', fetchadmin, [
     body('title', ' title minimum length 3 ').isLength({ min: 3 }),
-    body('imagePath1', ' imagePath1 is not empty  ').notEmpty(),
-    body('imagePath2', ' imagePath2 is not empty  ').notEmpty(),
+    body('imagePath1', ' imagePath1 is not empty  '),
+    body('imagePath2', ' imagePath2 is not empty  '),
     body('content', 'content must be atleast 5 characters').isLength({ min: 5 }),
     body('footercontent', 'footer Contents must be atleast 5 characters').isLength({ min: 5 })
     ],async (req, res) => {
@@ -116,8 +116,8 @@ router.put('/update-blogs/:id', fetchadmin, async(req, res) => {
             title:  title,
             content: content ,
             tag:tag?tag:null,
-            imagePath1:imagePath1,
-            imagePath2:imagePath2,
+            imagePath1:imagePath1?imagePath1:null,
+            imagePath2:imagePath2?imagePath1:null,
             footercontent: footercontent 
             // Add any other fields as needed
         };

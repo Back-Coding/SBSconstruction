@@ -270,21 +270,21 @@ function EditService(props) {
             <form onSubmit={CreateServiceContent}>
               <div className="mb-4">
                 <label htmlFor="title1" className="block text-gray-700 font-bold mb-2">
-                  Title
+                  Title*
                 </label>
                 <input type="text" id="title1" name="title"   className="border border-gray-400 rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" onChange={allOnChange} value={add.title} minLength={5} required
                 />
               </div>
               <div className="mb-4">
                 <label htmlFor="tag" className="block text-gray-700 font-bold mb-2">
-                  Tag
+                  Tag*
                 </label>
                 <input type="text" id="tag" name="tag"  className="border border-gray-400 rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" onChange={allOnChange} value={add.tag} minLength={5} required
                 />
               </div>
               <div className="mb-4">
                 
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="multiple_files">Image URL</label>
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="multiple_files">Image URL*</label>
               <div className="w-64">
               <input type="url" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" name="image_url" placeholder="Enter Image URL" value={add.image_url} onChange={allOnChange}/>
                  </div>
@@ -292,7 +292,7 @@ function EditService(props) {
               </div>
               <div className="mb-4">
                 <label htmlFor="type" className="block text-gray-700 font-bold mb-2">
-                 Service Type
+                 Service Type*
                 </label>
                 <select type="text" id="type" name="type" className="border border-gray-400 rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500" value={add.type} onChange={allOnChange} required>
                   <option value="">Select </option>
@@ -304,7 +304,7 @@ function EditService(props) {
               </div>
               <div className="mb-4">
                 <label htmlFor="description" className="block text-gray-700 font-bold mb-2">
-                  Description
+                  Description* (<span className="text-blue-400">work details</span>)
                 </label>
                 <textarea id="description" name="description" className="border border-gray-400 rounded-md py-2 px-3 w-full h-32 resize-none focus:outline-none focus:ring-2  focus:ring-blue-500"  onChange={allOnChange} value={add.description} minLength={10} required ></textarea>
               </div>

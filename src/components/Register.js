@@ -24,12 +24,13 @@ export default function Register(props) {
     }
   }
 
-  const [credentials, setCredentials] = useState({name:"" ,email:"",password:""})
+  const [credentials, setCredentials] = useState({name:"" ,email:"",password:"",confirmPassword:''})
   const navigate = useNavigate();
 
   const CreateUserOnServer=async (e)=>{
     e.preventDefault();
-   const {name,email,password}=credentials;
+   const {name,email,password,confirmPassword}=credentials;
+   if(password===confirmPassword){
     const response = await fetch('http://localhost:5000/api/auth/createuser', {
       method: "POST",
       headers: {
@@ -47,6 +48,10 @@ export default function Register(props) {
     }else{
       props.showAlert("Sorry a user with this email already exists","rad")
     }
+  }else{
+    
+    props.showAlert("Password do not match","rad")
+  }
   }
   
   const onChange = (e) => {
@@ -73,7 +78,7 @@ export default function Register(props) {
         </div>
         <div className="relative mb-4">
           <label html="confom_password" className={`leading-7 text-sm text-gray-${props.mode==='light'?900:100}`}>confom password </label>
-          <input type="password" id="confom_password" name="cpassword" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required onChange={onChange}  minLength={8} />
+          <input type="password" id="confom_password" name="confirmPassword" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required onChange={onChange} value={credentials.confirmPassword}  minLength={8} />
         </div>
         {/* <div className='text-center'>
           <span className="text-red-500 font-bold">
