@@ -18,7 +18,7 @@ const ServiceItems = (props) => {
                     {props.item.description} 
                 </td>
                 <td className="px-6 py-4">
-                {props.item.tag.substring(0,15)} 
+                {props.item.tag} 
                 </td>
                 <td className="px-3 py-4 text-right">
                     <button onClick={()=>{ update_Service(props.item)}}  className="font-medium text-blue-600 dark:text-blue-500 hover:underline" >Edit</button>

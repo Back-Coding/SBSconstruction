@@ -51,9 +51,9 @@ export default function Navbar(props) {
             <Link to="/" className={`mr-5 hover:text-gray-300 rounded 3px; cursor-pointer hover:bg-blue-500 p-2 
             ${location.pathname==="/"?"bg-blue-500":""}`}>Home</Link>
             <Link to="/service" className={`mr-5 hover:text-gray-300 rounded 3px; cursor-pointer hover:bg-blue-500 p-2 ${location.pathname==="/service"?"bg-blue-500":""}`}>Service</Link>
+            <Link to="/blog" className={`mr-5 hover:text-gray-300 rounded 3px; cursor-pointer hover:bg-blue-500 p-2 ${location.pathname==="/blog"?"bg-blue-500":""} `}>Blog</Link>
 
             {/*The below comment line not devlop woring on the page  */}
-            {/* <Link to="/blog" className={`mr-5 hover:text-gray-300 rounded 3px; cursor-pointer hover:bg-blue-500 p-2 ${location.pathname==="/blog"?"bg-blue-500":""} `}>Blog</Link> */}
             {/* <Link to="/social" className={`mr-5 hover:text-gray-300 rounded 3px; cursor-pointer hover:bg-blue-500 p-2 ${location.pathname==="/social"?"bg-blue-500":""} `}>Social</Link> */}
     
             <Link to="/contact" className={`mr-5 hover:text-gray-300 rounded 3px; cursor-pointer hover:bg-blue-500 p-2 ${location.pathname==="/contact"?"bg-blue-500":""}`}>Contact</Link>      

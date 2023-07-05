@@ -36,7 +36,7 @@ router.post('/addservice', fetchadmin, [
             const note = new Service({title, description, tag, image,type, admin: req.admin.id })
             const savedNote = await note.save()
 
-            res.json(savedNote)
+            res.json({message:"add a service"})
 
         } catch (error) {
             console.error(error.message);

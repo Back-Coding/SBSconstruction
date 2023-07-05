@@ -62,7 +62,7 @@ const [credentials, setCredentials] = useState({email:"",password:""});
 
   return (
     <>
-    <div className="container mx-auto mb-80d mt-16 md:mt-5 sm:mt-11">
+    <div className="container mx-auto mb-80 mt-16 md:mt-5 sm:mt-11">
     <div className="w-full ">
       <form onSubmit={LoginAdmin} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto max-w-xs ">
         <h2 className="text-center font-bold">Admin</h2>

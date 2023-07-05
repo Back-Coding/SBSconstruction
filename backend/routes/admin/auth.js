@@ -6,11 +6,11 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
+const JWT_SECRET_ADMIN = 'RupeshIsagoodb$oy???';
 
 
 // Crate Admin site here auth 
 // ROUTE 1: Crate admin a admin using POST "/api/auth/admin/createadmin". Login not requird 
-const JWT_SECRET_ADMIN = 'RupeshIsagoodb$oy???';
 router.post('/admin/createadmin-rupesh', [
   // body('name', 'Enter a valid name').isLength({ min: 3 }),
   body('email', 'Enter a valid email').isEmail(),

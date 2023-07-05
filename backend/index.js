@@ -34,6 +34,7 @@ app.use('/api/service/u',require('./routes/user/work_user_forms'))
 app.use('/api/u',require('./routes/admin/admin_dashboard'))
 app.use('/api/auth/opt',require('./routes/user/forget_password'))
 app.use('/api/admin',require('./routes/admin/forget_password'))
+app.use('/admin/api',require('./routes/admin/blogs'))
 
 
 app.listen(port, () => {

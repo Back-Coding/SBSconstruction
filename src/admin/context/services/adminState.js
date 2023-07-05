@@ -121,7 +121,6 @@ const fetchFomrData = async () => {
 }
 const deleteOneDataFroms = async (id) => {
   // API Call
-  console.log("delete the data");
   const response = await fetch(`${host}/api/service/u/deleteonerowforms/${id}`, {
     method: 'DELETE',
     headers: {

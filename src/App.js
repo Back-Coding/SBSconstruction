@@ -5,12 +5,12 @@ import Navbar from'./components/Navbar';
 import HomeContainer from './pages/HomeContainer';
 import Footer from './components/Footer';
 import Service from './pages/Service';
-import Blog from './pages/Blog';
+import Blog from './pages/Blogs';
 import Contact from './pages/Contact';
 import Login from './components/Login';
 import Register from './components/Register';
 import ForgottenPassword from './components/ForgottenPassword';
-import AdminForgottenPassword from './admin/components/ForgertPassword';
+import AdminForgottenPassword from './admin/components/AdminForgottenPassword';
 import companylogo from './img/company_logo.png'
 import Social from './pages/Social';
 import About from './pages/About';
@@ -22,7 +22,11 @@ import AdminLogin from './admin/AdminLogin';
 import NoteState from './admin/context/services/adminState';
 import AllDataWork from './admin/components/AllDataWork'
 import ResetPassword from './components/ResetPassword'
-import AdminResetPassword from './admin/components/ResetPassword'
+import AdminResetPassword from './admin/components/AdminForgottenPassword'
+import { BlogProvider } from './admin/context/blog/BlogContext';
+import axios from 'axios'
+
+
 const host="http://localhost:5000"
 
 function App()  {
@@ -30,7 +34,7 @@ function App()  {
   // const companylogo = 'company-logo.png'; // Example company log
 
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(true); // Example state for user login status
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false); // Example state for admin login status
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(true); // Example state for admin login status
   const [mode, setMode] = useState("light"); //drak and light
   const [alert, setAlert] = useState(null); // show alert
 
@@ -85,7 +89,7 @@ function App()  {
   const [exterior, setExterior] = useState([])
   const [repairingwork, setRepairingwork] = useState([])
   const [extrafast, setExtrafast] = useState([]);
-
+  const [blogData, setBlogsData] = useState([]);
 
 
   const fetchDataInterior = async () => {
@@ -124,8 +128,19 @@ function App()  {
       console.error(error);
     }
   }
+  // fetch Data in Blogs 
+  const fetchDataBlogs=() =>{
+    axios.get('http://example.com/api/blog').then(response => {
+      // Update the blogPosts state with the fetched data
+      setBlogsData(response.data);
+    })
+    .catch(error => {
+      console.error('Error fetching blog data:', error);
+    });
+  }
 
   useEffect(() => {
+    // fetchDataBlogs();
     fetchDataInterior();
     fetchDataExterior();
     fetchDataRepairingWork();
@@ -137,6 +152,7 @@ function App()  {
 
   return (
     <NoteState>
+      <BlogProvider>
     <BrowserRouter>
       {isUserLoggedIn ? (
         <Navbar companyname={getCompanyName} searchBar={false} toggleMode={toggleMode}  mode={mode} showAlert={showAlert}  />
@@ -153,8 +169,8 @@ function App()  {
         <Route path="/forgottenpassword" element={<ForgottenPassword mode={mode} host={host} showAlert={showAlert}  />} />
         <Route path="/about" element={<About companyname={getCompanyName} mode={mode} />} />
         <Route  path="/reset-password/:token" element={<ResetPassword mode={mode} host={host} showAlert={showAlert}  />} />
-        {/* <Route path="/blog"  element={<Blog blog="Blog" mode={mode}/> } /> 
-        <Route path="/social"  element={<Social mode={mode}/>} /> */}
+        <Route path="/blog"  element={<Blog blog="Blogs" blogData={blogData}  mode={mode}/> } /> 
+        {/* <Route path="/social"  element={<Social mode={mode}/>} /> */} 
         {!isUserLoggedIn && (
           // Ths contenct ADN behaviour is Login required  show Content
           <>
@@ -163,22 +179,17 @@ function App()  {
         )}
           {/* Admin site below and desing part working on */}
 
-        <Route path="/admin"  element={<AdminLogin mode={mode} showAlert={showAlert}  handleUserLogin={handleUserLogin} handleLogout={handleLogout} />} /> 
+        <Route path="/admin/login"  element={<AdminLogin mode={mode} showAlert={showAlert}  handleUserLogin={handleUserLogin} handleLogout={handleLogout} />} /> 
         <Route path="/admin/forgottenpassword" element={<AdminForgottenPassword mode={mode} host={host} showAlert={showAlert}  />} />
         <Route  path="/reset-password-admin/:token" element={<AdminResetPassword mode={mode} host={host} showAlert={showAlert}  />} />
         {isAdminLoggedIn ? (
-          
-          
           <>
         
           <Route path="/admin/dashboard" element={<Dashboard mode={mode} handleUserLogin={handleUserLogin} showAlert={showAlert} />} />
           <Route path="/admin/editblogs" element={<EditBlogs mode={mode} handleUserLogin={handleUserLogin} showAlert={showAlert} />} />
           <Route path="/admin/editservice" element={<EditService mode={mode} handleUserLogin={handleUserLogin} showAlert={showAlert} />} />
           <Route path="/admin/table" element={<AllDataWork mode={mode} handleUserLogin={handleUserLogin} showAlert={showAlert} />} />
-       
-    </>
-          
-                  
+        </>         
         ):null }
       </Routes>
       <Footer
@@ -187,6 +198,7 @@ function App()  {
         mode={mode}
       />
     </BrowserRouter>
+    </BlogProvider>
     </NoteState>
   
 

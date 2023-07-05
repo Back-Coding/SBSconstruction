@@ -13,7 +13,6 @@ const addContect = async (name,email,phoneno,pincode,address,description,city,st
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      // "auth-token": localStorage.getItem('token')
     },
     body: JSON.stringify({name,email,phoneno,pincode,address,description ,city,state,field})
   });

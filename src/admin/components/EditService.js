@@ -52,9 +52,10 @@ function EditService(props) {
     // Adding Serivce on database create documention  logic here /-----------------------------------------/
     const [isOpenAding, setIsOpenAding] = useState(false);
     const [add,setAdd] = useState({title:"", description: "", tag: "", type:"" ,image_url:''});
-  
-   
+    
+    
     const togglePopupAddingService = () => {
+      setAdd({title:"",description:"",tag:"",type:"",image_url:""})
       setIsOpenAding(!isOpenAding);
      
     };  
@@ -89,6 +90,7 @@ function EditService(props) {
     setFormData({id: currentSerive._id})
 }
   const togglePopup = () => {
+    setFormData({id:'',title: '', description: '', tag: '', type:'' ,image:''});
     setIsOpen(!isOpen);
    
   };
