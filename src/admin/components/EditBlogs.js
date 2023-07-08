@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link ,useNavigate } from "react-router-dom";
 import { BlogContext } from "../context/blog/BlogContext";
 import BlogPost_item from "./items/BlogPost_Item";
+import { Helmet } from "react-helmet";
 
 
 
@@ -111,8 +112,39 @@ function EditBlogs(props) {
 
   return (
     <> 
+    <Helmet >
+      
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SBSAdmin-Edit Blogs</title>
+  {/* <!-- Meta tags for SEO indexing and improved visibility --> */}
+  <meta name="description" content=" blogs on a variety of topics. Our engaging content covers everything from lifestyle. " />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="google" content="notranslate" />
+
+  {/* <!-- Additional meta tags --> */}
+  <meta name="author" content="Ankit Singh & Rupesh Prasad" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="og:title" content="SBSContraction And Interior"/>
+  <meta name="og:description" content="Your home,reimagined. welcome to our renovation and repair website, where dreams become reality. Discover endless possibilities for transform you space with our exprt team"/>
+  <meta name="og:url" content="https://sbscai.com" />
+  <meta name="og:type" content="website" />
+  <meta name="og:site_name" content="SBSContraction And Interior" />
+  <meta name="facebook:title" content="Ankit Surendra"/>
+  <meta name="facebook:description" content="Extra Fast: Extra fast refers to a service or work done with an accelerated timeline, aiming to complete the project in a shorter period than usual. It often requires efficient planning, allocation of resources, and streamlined processes to achieve the desired results quickly."/>
+  <meta name="facebook:image" content="https://scontent-bom1-2.xx.fbcdn.net/v/t39.30808-6/316419374_106090508997411_7012558156685824218_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_UYIR_RXnRAAX-pVKrV&_nc_ht=scontent-bom1-2.xx&oh=00_AfCA5LixV72MG_S7DJ7vkbZFq7PCPBXCem_qVcyPKIGUJg&oe=64ADCB9F"/>
+  <meta name="facebook:url" content="https://www.facebook.com/people/Ankit-Surendra/pfbid0ZeSvuSY2ZdmCsJL5zhPRoGABC73Ur4mvRcG5E5tRHU6Rc5LWnMsYTxf5gsQBtx3Ql/?mibextid=ZbWKwL" />
+
+  <meta name="instagram:title" content="SBSContraction And Interior"/>
+  <meta name="instagram:description" content="Extra Fast: Extra fast refers to a service or work done with an accelerated timeline, aiming to complete the project in a shorter period than usual. It often requires efficient planning, allocation of resources, and streamlined processes to achieve the desired results quickly."/>
+  <meta name="instagram:url" content="https://www.instagram.com/sbs_constructions_and_interior"/>
+
+  {/* <!-- Canonical URL --> */}
+  <link rel="canonical" href="https://sbscai.com" />
+    </Helmet>
       <div className="bg-gray-100 sm:scale-100 " >
-        <div className=" shadow  bg-blue-400">
+        <div className=" shadow  bg-blue-500">
           <div className="container mx-auto py-4 px-6 ">
             <h1 className="text-2xl font-semibold text-center ">Blogs</h1>
           </div>
@@ -397,7 +429,7 @@ function EditBlogs(props) {
               </div>
               <div className="w-64">
                 <label htmlFor="image_url " className=" text-gray-700 font-bold mb-2">Image URL Top  </label>
-               <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter Image URL" id="image_url" name="imagePath1" type="url"  onChange={handleChange} value={dataBlog.imagePath1} required/>
+               <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter Image URL" id="image_url" name="imagePath1" type="url"  onChange={handleChange} value={dataBlog.imagePath1} />
               </div>
               <div className="mb-1">
                 <label htmlFor="content" className="block text-gray-700 font-bold mb-2">
@@ -407,7 +439,7 @@ function EditBlogs(props) {
               </div>
               <div className="w-64">
                 <label htmlFor="image_url1d" className=" text-gray-700 font-bold mb-2">Image URL Middle</label>
-               <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter Image URL" id="image_url1d" name="imagePath2" type="url"  onChange={handleChange} value={dataBlog.imagePath2} required/>
+               <input className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" placeholder="Enter Image URL" id="image_url1d" name="imagePath2" type="url"  onChange={handleChange} value={dataBlog.imagePath2} />
               </div>
               <div className="mb-0">
                 <label htmlFor="content" className="block text-gray-700 font-bold mb-2">

@@ -1,7 +1,7 @@
 import React ,{useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
-const url ="http://localhost:5000/api/auth/admin/login"
+const url =""
 
 // admin login part amdin end-point hit http:// domain.com/admin click here 
 export default function AdminLogin(props) {
@@ -15,7 +15,7 @@ const [credentials, setCredentials] = useState({email:"",password:""});
     e.preventDefault();
     try {
       
-      const response = await fetch(url, {
+      const response = await fetch(`${props.host}/api/auth/admin/login`, {
         method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ const [credentials, setCredentials] = useState({email:"",password:""});
     }
   } catch (error) {
     props.handleLogout(false,false);
-    
+    console.log(error)
     props.showAlert("Check your internet connection and try again ",'red')
   }
   }

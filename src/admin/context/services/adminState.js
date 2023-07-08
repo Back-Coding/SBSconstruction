@@ -1,9 +1,9 @@
 import react, { useState } from "react";
 import serviceContext from './adminContext'
 
-const host = "http://localhost:5000"
+// const host = "http://localhost:5000"
 
-const NoteState = (props) => {
+const NoteState = (props,{host}) => {
 
   const [service, setService] = useState([])
   const [allUser, setAllUser] = useState([])

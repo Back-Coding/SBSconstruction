@@ -1,10 +1,10 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
-const host = "http://localhost:5000"
+// const host = "http://localhost:5000"
 
 const BlogContext = createContext();
 
-const BlogProvider = ({ children }) => {
+const BlogProvider = ({ children ,host}) => {
   const [blogs, setBlogs] = useState([]);
 
   // Fetch all blogs from the backend API
