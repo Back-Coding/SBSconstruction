@@ -1,9 +1,9 @@
 import react, { useState } from "react";
 import serviceContext from './adminContext'
 
-// const host = "http://localhost:5000"
+// const props.host = "http://localprops.host:5000"
 
-const NoteState = (props,{host}) => {
+const NoteState = (props) => {
 
   const [service, setService] = useState([])
   const [allUser, setAllUser] = useState([])
@@ -16,7 +16,7 @@ const NoteState = (props,{host}) => {
   // Get all 
   const fetchService = async () => {
     // API Call 
-    const response = await fetch(`${host}/api/service/fetchallservice`, {
+    const response = await fetch(`${props.host}/api/service/fetchallservice`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +32,8 @@ const NoteState = (props,{host}) => {
   const addService = async (title, description, tag,type , image) => {
     // TODO: API Call
     // API Call 
-    const response = await fetch(`${host}/api/service/addservice`, {
+    console.log(props.host)
+    const response = await fetch(`${props.host}/api/service/addservice`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -49,7 +50,7 @@ const NoteState = (props,{host}) => {
   const deleteService = async (id) => {
     // API Call
 
-    const response = await fetch(`${host}/api/service/deleteservice/${id}`, {
+    const response = await fetch(`${props.host}/api/service/deleteservice/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -66,7 +67,7 @@ const NoteState = (props,{host}) => {
    
     
     // API Call 
-    const response = await fetch(`${host}/api/service/updateserve/${id}`, {
+    const response = await fetch(`${props.host}/api/service/updateserve/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -98,7 +99,7 @@ const NoteState = (props,{host}) => {
  */
 const fetchAllUser = async () => {
   // API Call 
-  const response = await fetch(`${host}/api/u/fetchalluser`, {
+  const response = await fetch(`${props.host}/api/u/fetchalluser`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -110,7 +111,7 @@ const fetchAllUser = async () => {
 const fetchFomrData = async () => {
 
   // API Call 
-  const response = await fetch(`${host}/api/u/fetchforms`, {
+  const response = await fetch(`${props.host}/api/u/fetchforms`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -122,7 +123,7 @@ const fetchFomrData = async () => {
 const deleteOneDataFroms = async (id) => {
   // API Call
   console.log(id)
-  const response = await fetch(`${host}/api/service/u/deleteonerowforms/${id}`, {
+  const response = await fetch(`${props.host}/api/service/u/deleteonerowforms/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

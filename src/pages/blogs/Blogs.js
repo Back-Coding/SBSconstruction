@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import BlogItem from './BlogItem ';
 import { Helmet } from 'react-helmet';
 export default function Blogs(props) {
 
+  
 
   return (
   <>
@@ -38,7 +39,6 @@ export default function Blogs(props) {
 {/* <!-- Canonical URL --> */}
 <link rel="canonical" href="https://sbscai.com" />
 </Helmet>
-
   <section className="text-gray-600 mb-72 body-font overflow-hidden">
   <h2 className={`text-3xl font-medium title-font text-gray-${props.mode === 'light' ? 900 : 100}  my-10 text-center`}>{props.blog}</h2>
   <div className="container px-5 py-15 mx-auto">

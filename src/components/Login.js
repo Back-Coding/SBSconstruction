@@ -61,9 +61,9 @@ export default function Login(props) {
 
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Login -SBSContraction And Interior </title>
+      <title>Sinn In -SBSContraction And Interior </title>
       {/* <!-- Meta tags for SEO indexing and improved visibility --> */}
-      <meta name="description" content="Login to access your account and enjoy personalized features. Enter your credentials and securely access your account to manage your settings, preferences, and exclusive content. Experience convenience and control with our login feature" />
+      <meta name="description" content="Singin to access your account and enjoy personalized features. Enter your credentials and securely access your account to manage your settings, preferences, and exclusive content. Experience convenience and control with our login feature" />
       <meta name="robots" content="index, follow" />
       <meta name="googlebot" content="index, follow" />
       <meta name="google" content="notranslate" />
@@ -115,7 +115,7 @@ export default function Login(props) {
       <button className="text-white bg-green-800 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Login</button>
       {/* <p className="text-xs text-gray-500 mt-3">Login</p> */}
       <div className={`text-sm font-medium text-gray-${props.mode==='light'?900:100} dark:text-gray-300 py-2`}>
-            Not registered ? <Link to="/register" className="text-blue-700 hover:underline dark:text-blue-500">Create new account</Link>
+            Not registered ?<Link to="/register" className="text-blue-700 hover:underline dark:text-blue-500">Create new account</Link>
         </div>
     </form>
   </div>

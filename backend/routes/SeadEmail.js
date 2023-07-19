@@ -6,8 +6,8 @@ const { google } = require("googleapis");
   function sendEmail(email, resetLink){
     try {
       
-      const CLIENT_ID ="365563839723-0jfoabebmd5lii33e35kgnfc90f3fnu4.apps.googleusercontent.com";
-      const CLIENT_SECRET = "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";
+      const CLIENT_ID = process.env.CLIENT_ID||"365563839723-mjfr21fvpr4p79akcrliah31ee37naic.apps.googleusercontent.com";
+      const CLIENT_SECRET = process.env.CLIENT_SECRET||"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";
       const REDIRECT_URL = "https://developers.google.com/oauthplayground"; // This should match the redirect URI you specified in the Google Developers Console
 
       const OAuth2 = google.auth.OAuth2;
@@ -21,8 +21,7 @@ const { google } = require("googleapis");
   
       // Generate the access token
       oauth2Client.setCredentials({
-        refresh_token:
-          "1//04wyWU22Skr7BCgYIARAAGAQSNwF-L9IrMt73pRrUH5U4Y1IRKr84nCR-vhp2FC9qJNG7AzNEDh6N9Lr6kKn0BrgeoLMWsAL7GAQ",
+        refresh_token: process.env.refresh_token||"1//04a-HD082UNIFCgYIARAAGAQSNwF-L9IrwpWHQqtxcXz2VZVhL4hCqgMSSa_EgY4A6h3xJMynmL93zOYnP-_6SXNycc5ro93JmSQ"
       });
   
       // Get the access token
@@ -37,7 +36,7 @@ const { google } = require("googleapis");
           clientId: CLIENT_ID,
           clientSecret: CLIENT_SECRET,
           refreshToken:
-            "1//04wyWU22Skr7BCgYIARAAGAQSNwF-L9IrMt73pRrUH5U4Y1IRKr84nCR-vhp2FC9qJNG7AzNEDh6N9Lr6kKn0BrgeoLMWsAL7GAQ",
+            "1//04a-HD082UNIFCgYIARAAGAQSNwF-L9IrwpWHQqtxcXz2VZVhL4hCqgMSSa_EgY4A6h3xJMynmL93zOYnP-_6SXNycc5ro93JmSQ",
           accessToken: accessToken,
         },
       });

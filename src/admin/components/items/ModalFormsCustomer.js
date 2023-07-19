@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import adminContext from '../../context/services/adminContext'
+import React from 'react';
+// import adminContext from '../../context/services/adminContext'
 const ModalFormsCustomer = ({ isOpen, onClose }) => {
   
   

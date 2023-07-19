@@ -72,6 +72,7 @@ function EditService(props) {
       e.preventDefault();
       // Perform form submission logic here
       // Reset the form data
+      console.log("ADD Service")
         addService(add.title,add.description,add.tag,add.type,add.image_url);
         setAdd({title:"",description:"",tag:"",type:"",image_url:""})
       // Close the popup

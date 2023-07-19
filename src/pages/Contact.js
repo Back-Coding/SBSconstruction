@@ -53,8 +53,7 @@ export default function Contact(props) {
             </div>
           </div>
           <div className="flex text-4xl justify-center pt-12">
-            <a
-              href="https://www.facebook.com/people/Ankit-Surendra/pfbid0ZLeQdwEZZPufHRpVgZAJ7Z5bZCJxMoZ652PkQs6y91drjoA3FRXKBfRzfeHVDTiJl/?mibextid=ZbWKwL"
+            <a  href="https://www.facebook.com/people/Ankit-Surendra/pfbid0ZLeQdwEZZPufHRpVgZAJ7Z5bZCJxMoZ652PkQs6y91drjoA3FRXKBfRzfeHVDTiJl/?mibextid=ZbWKwL"
               className={`cursor-pointer mx-6 hover:text-purple-${props.mode==='light'?500:50} active:text-purple-700`}
               target="_blank"
             >

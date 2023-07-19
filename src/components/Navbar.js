@@ -93,7 +93,7 @@ export default function Navbar(props) {
       )}
     </div >
        }
-          <div className="cursor-pointer mx-3" onClick={props.toggleMode}>{props.mode === 'light' ? drackIcon : lightIcon} </div>
+          <div className="cursor-pointer mx-3 " onClick={props.toggleMode}>{props.mode === 'light' ? drackIcon : lightIcon} </div>
         </div>
       </header>
     </>

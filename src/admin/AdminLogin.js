@@ -1,7 +1,6 @@
 import React ,{useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
-const url =""
 
 // admin login part amdin end-point hit http:// domain.com/admin click here 
 export default function AdminLogin(props) {
@@ -93,3 +92,4 @@ const [credentials, setCredentials] = useState({email:"",password:""});
     </>
   )
 }
+

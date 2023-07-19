@@ -16,13 +16,14 @@ router.post('/admin/createadmin-rupesh', [
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
-  let success = false;
-  // If there are errors, return Bad request and the errors
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
+  console.log("Hid admin function ")
   try {
+    let success = false;
+    // If there are errors, return Bad request and the errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
     // Check whether the user with this email exists already
     let admin = await Admin.findOne({ email: req.body.email });
     if (admin) {
@@ -31,7 +32,6 @@ router.post('/admin/createadmin-rupesh', [
     }
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password, salt);
-
     // Create a new user
     admin = await Admin.create({
       name: req.body.name,

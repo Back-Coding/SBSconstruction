@@ -1,5 +1,4 @@
-import React ,{useEffect, useState}from 'react' ;
-import { Link } from 'react-router-dom'
+import React from 'react' ;
 import InteriorItem from '../serviceitem/InteriorItem'
 import ExtraFastServiseItem from '../serviceitem/ExtraFastServiceItem';
 import RepairingWorkItem from '../serviceitem/RepairingWorkItem';
@@ -172,7 +171,7 @@ const extraFastServise = () => {
   </div>
 </header>
 <section className="text-gray-600 body-font " id='idineterior'>
-  <h2 className={`text-3xl font-medium title-font text-gray-${props.mode==='light'?900:100}  my-10 text-center`}> Interior Servise</h2>
+  <h2 className={`text-3xl font-medium title-font text-gray-${props.mode==='light'?900:100}  my-5 text-center`}> Interior Servise</h2>
   <div className="container px-5 py-10 mx-auto">
     <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
       
@@ -187,7 +186,7 @@ const extraFastServise = () => {
   </div>
 </section>
 <section className="text-gray-600 body-font hidden" id='idexterior'>
-    <h2 className={`text-3xl font-medium title-font text-gray-${props.mode==='light'?900:100} my-10 text-center`}>Exterior Servise</h2>
+    <h2 className={`text-3xl font-medium title-font text-gray-${props.mode==='light'?900:100} my-5 text-center`}>Exterior Servise</h2>
     <div className="container px-5 py-10 mx-auto">
       <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
       
@@ -202,7 +201,7 @@ const extraFastServise = () => {
     </div>
   </section>
   <section className="text-gray-600 body-font hidden" id='idrepairing_work'>
-  <h2 className={`text-3xl font-medium title-font text-gray-${props.mode==='light'?900:100}   my-10 text-center`}>Repairing Work</h2>
+  <h2 className={`text-3xl font-medium title-font text-gray-${props.mode==='light'?900:100}   my-5 text-center`}>Repairing Work</h2>
   <div className="container px-5 py-10 mx-auto">
     <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
     
@@ -217,7 +216,7 @@ const extraFastServise = () => {
   </div>
 </section>
   <section className="text-gray-600 body-font hidden" id='idextra_fast'>
-  <h2 className={`text-3xl font-medium title-font text-gray-${props.mode==='light'?900:100}  my-10 text-center`}>Extra Fast Servise</h2>
+  <h2 className={`text-3xl font-medium title-font text-gray-${props.mode==='light'?900:100}  my-5 text-center`}>Extra Fast Servise</h2>
   <div className="container px-5 py-10 mx-auto">
     <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
       

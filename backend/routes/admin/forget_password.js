@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const crypto= require('crypto');
 const SendEmail  = require('../SeadEmail');
 
-
+const BASE_URL= process.env.BASE_URL ||"https://sbscai.com";
 
 
 
@@ -34,8 +34,8 @@ router.post("/forgert-password-admin", middleware1, async (req, res) => {
     user.resetTokenExpiry = Date.now() + 10 * 60 * 1000; // Token expires in 10 minutes
     await user.save();
   // Construct the reset URL
-  const resetUrl = `http://localhost:3000/reset-password-admin/${resetToken}`;
 
+  const resetUrl = `${BASE_URL}/reset-password-admin/${resetToken}`;
   // Send password reset email to the user
   SendEmail.sendEmail(email, resetUrl);
   res.json({ message: 'Reset email sent'});
