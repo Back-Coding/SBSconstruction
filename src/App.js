@@ -30,7 +30,6 @@ import { Helmet } from 'react-helmet';
 
 
 const host="http://localhost:5000"
-// const host="https://sbs-constraction-backend.vercel.app"
 
 function App()  {
   const getCompanyName = 'SBSContraction And Interior'; // Example company name

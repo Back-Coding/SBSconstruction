@@ -11,12 +11,11 @@ const JWT_SECRET_ADMIN = 'RupeshIsagoodb$oy???';
 
 // Crate Admin site here auth 
 // ROUTE 1: Crate admin a admin using POST "/api/auth/admin/createadmin". Login not requird 
-router.post('/admin/createadmin-rupesh', [
+router.post('/admin/createadmin-rupesh-ankit', [
   // body('name', 'Enter a valid name').isLength({ min: 3 }),
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
-  console.log("Hid admin function ")
   try {
     let success = false;
     // If there are errors, return Bad request and the errors
